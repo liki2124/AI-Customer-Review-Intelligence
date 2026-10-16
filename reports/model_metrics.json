@@ -1,0 +1,7 @@
+{
+  "model": "TF-IDF + Logistic Regression",
+  "test_samples": 12178,
+  "accuracy": 0.8432419116439481,
+  "macro_f1": 0.6779108463601684,
+  "weighted_f1": 0.8581089452938839
+}
