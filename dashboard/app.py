@@ -1,6 +1,8 @@
 ﻿from pathlib import Path
 import sqlite3
+import sys
 
+from src.load_reports import load_reports
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -21,13 +23,14 @@ st.caption(
     "Customer sentiment, product-category risks, complaint themes "
     "and machine-learning performance."
 )
-
 if not DB_PATH.exists():
-    st.error(
-        "Reporting database not found. From the project root, run "
-        "`python src/load_reports.py` and then restart the dashboard."
-    )
-    st.stop()
+    try:
+        with st.spinner("Preparing the reporting database..."):
+            load_reports()
+    except Exception as exc:
+        st.error("Could not prepare the reporting database.")
+        st.exception(exc)
+        st.stop()
 
 
 @st.cache_data
