@@ -1,14 +1,14 @@
 ﻿from pathlib import Path
 import sqlite3
+import subprocess
 import sys
-from src.load_reports import load_reports
+
 import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+
 ROOT = Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
 DB_PATH = ROOT / "data" / "customer_reviews.db"
 
 st.set_page_config(
@@ -26,12 +26,24 @@ st.caption(
 if not DB_PATH.exists():
     try:
         with st.spinner("Preparing the reporting database..."):
-            load_reports()
+            result = subprocess.run(
+                [sys.executable, str(ROOT / "src" / "load_reports.py")],
+                cwd=str(ROOT),
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+    except subprocess.CalledProcessError as exc:
+        st.error("Could not prepare the reporting database.")
+        if exc.stdout:
+            st.text(exc.stdout)
+        if exc.stderr:
+            st.code(exc.stderr)
+        st.stop()
     except Exception as exc:
         st.error("Could not prepare the reporting database.")
         st.exception(exc)
         st.stop()
-
 
 @st.cache_data
 def load_table(table_name: str) -> pd.DataFrame:
