@@ -1,4 +1,4 @@
-﻿name: AI Customer Review Intelligence CI
+name: AI Customer Review Intelligence CI
 
 on:
   push:
