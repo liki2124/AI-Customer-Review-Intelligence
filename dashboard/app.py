@@ -1,14 +1,14 @@
 ﻿from pathlib import Path
 import sqlite3
 import sys
-
 from src.load_reports import load_reports
 import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 DB_PATH = ROOT / "data" / "customer_reviews.db"
 
 st.set_page_config(
