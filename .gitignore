@@ -6,3 +6,13 @@ __pycache__/
 .venv/
 venv/
 *.pyc
+
+# Generated local database files
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+
+# Python and test caches
+.pytest_cache/
+__pycache__/
+*.py[cod]
