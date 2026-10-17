@@ -31,6 +31,9 @@ jobs:
       - name: Check Python syntax
         run: python -m py_compile src/load_reports.py src/run_sql.py
 
+      - name: Build reporting database
+        run: python src/load_reports.py
+
       - name: Run SQL analytics
         run: python src/run_sql.py
 
