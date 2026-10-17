@@ -1,4 +1,4 @@
-﻿# AI Customer Review Intelligence
+# AI Customer Review Intelligence
 
 An end-to-end customer review analytics project combining natural language processing (NLP), machine learning, SQL analytics, and automated data validation to turn customer feedback into actionable product insights.
 
@@ -83,6 +83,35 @@ The difference between macro and weighted F1-score indicates that performance va
 
 These results indicate where further investigation may be valuable; they do not, by themselves, establish the underlying cause of customer dissatisfaction.
 
+## Interactive Streamlit Dashboard
+
+Explore customer sentiment, product-category performance, complaint themes, and model evaluation through the interactive Streamlit dashboard.
+
+Run locally from the project root:
+
+```bash
+python -m streamlit run dashboard/app.py
+```
+
+### Dashboard screenshots
+
+**Executive overview**
+
+![Dashboard overview](docs/screenshots/dashboard_overview.png)
+
+**Category intelligence**
+
+![Category intelligence](docs/screenshots/category_intellegence.png)
+
+**Complaint themes**
+
+![Complaint theme heatmap](docs/screenshots/complaint_theme.png)
+
+**Model performance**
+
+![Model performance](docs/screenshots/model_performance.png)
+
+---
 ## SQL Analytics and Reporting
 
 The project includes SQL queries for:
